@@ -1,0 +1,21 @@
+[project]
+name = "minas-webdav"
+version = "0.1.0"
+description = "Xiaomi Smart Storage (MINAS) WebDAV control toolkit: CLI, probe, local proxy"
+requires-python = ">=3.10"
+readme = "README.md"
+
+[project.scripts]
+minas-webdav = "minas_webdav.cli:main"
+minas-webdav-proxy = "minas_webdav.proxy:run"
+minas-webdav-probe = "minas_webdav.probe:run"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["minas_webdav"]
+
+[tool.setuptools.package-data]
+minas_webdav = ["minas_config.example.json"]

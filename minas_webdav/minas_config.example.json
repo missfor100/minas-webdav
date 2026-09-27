@@ -1,0 +1,11 @@
+{
+  "host": "192.168.1.100",
+  "port": 5000,
+  "cn": "nas.<device-uid>.<hash>.0",
+  "data_root": "/pool0/data",
+  "cert_home": "%LOCALAPPDATA%\\minasCert",
+  "proxy": {
+    "listen_host": "127.0.0.1",
+    "listen_port": 8899
+  }
+}

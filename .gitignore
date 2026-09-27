@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+
+# local device config (device CN / IP) — keep out of git
+minas_webdav/minas_config.json
+
+# credentials must never be committed
+credentials.env
+*.env
