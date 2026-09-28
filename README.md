@@ -95,7 +95,39 @@ docs/          # webdav-surface.md 协议实测结论
 - 不写日志、不打印密码；不碰 SSH/Docker/固件
 - 递归删除、批量动照片/备份目录前必须征得用户同意
 
+## Agent 接入
+
+本项目同时提供两种 agent 接入方式（设计见 [docs/agent-integration-design.md](docs/agent-integration-design.md)）：
+
+| 方式 | 位置 | 说明 |
+|---|---|---|
+| **Skill** | 仓库 `skill/` → 拷到 `~/.config/mimocode/skills/minas-webdav/` | SKILL.md 触发 + 调本 CLI；全局可用 |
+| **MCP** | `mcp_server.py` + `mimocode.jsonc` 注册 `minas-webdav` | 14 个 `nas_*` 工具（stdio）；`nas_rm` 递归必须 `confirm=true` |
+
+安装 Skill（MiMoCode）：
+
+```powershell
+Copy-Item -Recurse skill "$HOME\.config\mimocode\skills\minas-webdav"
+```
+
+注册 MCP（`~/.config/mimocode/mimocode.jsonc` 的 `mcp` 段）：
+
+```jsonc
+"minas-webdav": {
+  "type": "local",
+  "command": ["<python>", "-m", "minas_webdav.mcp_server"],
+  "environment": { "PYTHONPATH": "<本仓库路径>" },
+  "enabled": true
+}
+```
+
+MCP 依赖装在项目 venv（`pip install mcp`，2.x）。改 CLI 后请同步更新 SKILL.md 命令表与 MCP 工具签名。
+
+## License
+
+Apache-2.0，见 [LICENSE](LICENSE) 与 [NOTICE](NOTICE)。与 Xiaomi 无关联。
+
 ## 相关
 
-- Samba 通道（仅 Z: 备份共享）是另一套：`F:\mimo\小米nas\minas-skill`
-- 旧工具目录 `F:\mimo\小米nas\tools` 保留归档，本仓库为权威版本
+- 挂 N 盘可选 [rclone](https://rclone.com)（官方下载；仓库不打包二进制）
+- Samba 通道（仅 Z: 备份共享）是另一套：`minas-skill`（SMB 445）
