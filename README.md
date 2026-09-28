@@ -12,6 +12,8 @@
 
 ## 前置条件
 
+配套环境、设备版本与兼容性说明见 **[docs/ENVIRONMENT.md](docs/ENVIRONMENT.md)**（Windows 11 / Python 3.10+ / 小米智能存储官方客户端 1.0.8.170 / `mcp` 2.x；NAS 服务面：nginx/1.24.0 + DAV:1,2）。
+
 1. NAS 与本机同一局域网（默认 `192.168.1.100:5000`）
 2. 官方客户端已登录过（证书在 `%LOCALAPPDATA%\minasCert\`）
 3. 凭据文件在**仓库外**：`%LOCALAPPDATA%\minasCred\credentials.env`

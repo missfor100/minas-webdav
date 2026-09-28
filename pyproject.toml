@@ -6,6 +6,9 @@ license = { text = "Apache-2.0" }
 requires-python = ">=3.10"
 readme = "README.md"
 
+[project.optional-dependencies]
+mcp = ["mcp>=2,<3"]
+
 [project.scripts]
 minas-webdav = "minas_webdav.cli:main"
 minas-webdav-proxy = "minas_webdav.proxy:run"
